@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f8f8f6;
+  --surface: #ffffff;
+  --ink: #111111;
+  --ink-muted: #6b6b6b;
+  --accent: #2c5f8a;
+  --accent-light: #eaf1f8;
+  --border: #e4e4e0;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-border: var(--border);
+
+  --font-serif: var(--font-dm-serif);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Thin elegant scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Gradient mesh blob drift */
+@keyframes meshDriftA {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(8%, -6%) scale(1.12); }
+  66% { transform: translate(-6%, 5%) scale(0.94); }
+}
+@keyframes meshDriftB {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-9%, 7%) scale(0.9); }
+  66% { transform: translate(7%, -4%) scale(1.15); }
+}
+@keyframes meshDriftC {
+  0%, 100% { transform: translate(0, 0) scale(1.05); }
+  50% { transform: translate(5%, 8%) scale(0.92); }
+}
