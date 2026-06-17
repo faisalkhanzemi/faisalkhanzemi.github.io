@@ -17,19 +17,15 @@ export default function SmoothScroll() {
     ).matches;
     if (prefersReduced) return;
 
+    // autoRaf lets Lenis drive its own requestAnimationFrame loop, which is
+    // more reliable than a hand-rolled loop (esp. under Strict Mode remounts).
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
+      autoRaf: true,
     });
     window.__lenis = lenis;
-
-    let raf = 0;
-    const loop = (time: number) => {
-      lenis.raf(time);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
 
     // Smooth-scroll in-page anchor clicks, accounting for the fixed nav.
     const onClick = (e: MouseEvent) => {
@@ -48,7 +44,6 @@ export default function SmoothScroll() {
 
     return () => {
       document.removeEventListener("click", onClick);
-      cancelAnimationFrame(raf);
       lenis.destroy();
       delete window.__lenis;
     };

@@ -8,6 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { experience } from "@/lib/content";
 import Reveal from "./ui/Reveal";
 import SectionLabel from "./SectionLabel";
@@ -56,9 +57,9 @@ function PinnedExperience() {
     <div
       ref={wrapRef}
       className="relative hidden md:block"
-      style={{ height: `${n * 90}vh` }}
+      style={{ height: `${n * 58}vh` }}
     >
-      <div className="sticky top-0 flex h-screen items-center">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="grid w-full grid-cols-[15rem_1fr] gap-12">
           {/* Left rail: companies + progress spine */}
           <div className="relative border-l border-border pl-8">
@@ -154,6 +155,18 @@ function PinnedExperience() {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+
+        {/* continuation cue so the pinned stage never reads as the page end */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-7 flex justify-center">
+          <motion.div
+            className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-ink-muted"
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            Skills &amp; Work below
+            <ChevronDown className="h-3.5 w-3.5" />
+          </motion.div>
         </div>
       </div>
     </div>
