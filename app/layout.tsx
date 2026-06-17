@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { profile } from "@/lib/content";
 import "./globals.css";
 
 const dmSerif = DM_Serif_Display({
@@ -22,16 +24,70 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const SITE_URL = "https://faisal-khan-portfolio.vercel.app";
+const TITLE = "Mohd Faisal Khan — CRM & Lifecycle Marketing Specialist";
+const DESCRIPTION =
+  "CRM and lifecycle marketing specialist in Dubai. 8+ years building customer journeys, automation stacks, and data-driven campaigns across home services, consumer tech, food delivery, and retail.";
+
 export const metadata: Metadata = {
-  title: "Mohd Faisal Khan — CRM & Lifecycle Marketing Specialist",
-  description:
-    "CRM and lifecycle marketing specialist in Dubai. 8+ years building customer journeys, automation stacks, and data-driven campaigns across home services, consumer tech, food delivery, and retail.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  authors: [{ name: "Mohd Faisal Khan" }],
+  keywords: [
+    "CRM Specialist",
+    "Lifecycle Marketing",
+    "Retention Marketing",
+    "CleverTap",
+    "MoEngage",
+    "Dubai",
+    "Mohd Faisal Khan",
+  ],
   openGraph: {
-    title: "Mohd Faisal Khan — CRM & Lifecycle Marketing Specialist",
+    title: TITLE,
     description:
       "CRM and lifecycle marketing that moves the retention needle. 8+ years across UAE, India, and Canada.",
+    url: SITE_URL,
+    siteName: "Mohd Faisal Khan",
+    locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description:
+      "CRM and lifecycle marketing that moves the retention needle. 8+ years across UAE, India, and Canada.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f8f8f6",
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Mohd Faisal Khan",
+  jobTitle: "CRM & Lifecycle Marketing Specialist",
+  url: SITE_URL,
+  email: `mailto:${profile.email}`,
+  telephone: profile.phone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Dubai",
+    addressCountry: "AE",
+  },
+  sameAs: [profile.linkedinUrl],
+  knowsAbout: [
+    "CRM",
+    "Lifecycle Marketing",
+    "Retention Marketing",
+    "Marketing Automation",
+    "A/B Testing",
+    "Customer Segmentation",
+    "SEO",
+  ],
 };
 
 export default function RootLayout({
@@ -44,7 +100,14 @@ export default function RootLayout({
       lang="en"
       className={`${dmSerif.variable} ${inter.variable} ${jetbrains.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
