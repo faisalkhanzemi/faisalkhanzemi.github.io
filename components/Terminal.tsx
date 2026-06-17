@@ -15,6 +15,8 @@ const facts: Record<string, string[]> = {
     "  contact    how to reach me",
     "  clear      clear the screen",
     "  exit       close the terminal",
+    "",
+    "Plain English works too — try \"who is faisal\" or \"how do I reach you\".",
   ],
   whoami: [
     `${profile.name}`,
@@ -41,9 +43,74 @@ const facts: Record<string, string[]> = {
   ],
 };
 
+const COMMANDS = ["whoami", "stack", "stats", "contact", "help", "clear", "exit"];
+
+// Exact natural-language phrases (incl. the help descriptions people copy).
+const aliases: Record<string, string> = {
+  "who is faisal": "whoami",
+  "who are you": "whoami",
+  about: "whoami",
+  "about you": "whoami",
+  "about faisal": "whoami",
+  bio: "whoami",
+  whois: "whoami",
+  "tools of the trade": "stack",
+  tools: "stack",
+  skills: "stack",
+  tech: "stack",
+  "tech stack": "stack",
+  "what do you use": "stack",
+  "career numbers": "stats",
+  numbers: "stats",
+  metrics: "stats",
+  results: "stats",
+  experience: "stats",
+  achievements: "stats",
+  "how to reach me": "contact",
+  "reach me": "contact",
+  reach: "contact",
+  hire: "contact",
+  "hire me": "contact",
+  connect: "contact",
+  "get in touch": "contact",
+  commands: "help",
+  options: "help",
+  "?": "help",
+  cls: "clear",
+  quit: "exit",
+  close: "exit",
+};
+
+// Looser keyword fallback when no exact phrase matches.
+const keywordMap: [string, string[]][] = [
+  ["contact", ["reach", "contact", "email", "hire", "connect", "touch", "linkedin", "mail"]],
+  ["stack", ["tool", "stack", "skill", "tech", "platform", "software"]],
+  ["stats", ["number", "stat", "metric", "result", "achiev", "year", "impact"]],
+  ["whoami", ["who", "faisal", "about", "bio", "yourself"]],
+  ["help", ["help", "command", "option"]],
+];
+
+// Map any input (exact command, alias, natural phrase) to a command, or null.
+function resolveCommand(input: string): string | null {
+  const c = input.trim().toLowerCase().replace(/\s+/g, " ");
+  if (!c) return null;
+  if (COMMANDS.includes(c)) return c;
+  if (aliases[c]) return aliases[c];
+  const cleaned = c
+    .replace(/^(show me|tell me|give me|what'?s|what is|what are|show|list)\s+/, "")
+    .replace(/[?.!]+$/, "")
+    .trim();
+  if (COMMANDS.includes(cleaned)) return cleaned;
+  if (aliases[cleaned]) return aliases[cleaned];
+  for (const [cmd, kws] of keywordMap) {
+    if (kws.some((k) => c.includes(k))) return cmd;
+  }
+  return null;
+}
+
 const banner: Line[] = [
   { type: "out", text: "faisal@portfolio ~ % welcome 👋" },
-  { type: "out", text: "Type `help` to see what I can show you." },
+  { type: "out", text: "Type `help`, or just ask in plain English." },
 ];
 
 export default function Terminal() {
@@ -74,9 +141,10 @@ export default function Terminal() {
   }, [lines]);
 
   function run(raw: string) {
-    const cmd = raw.trim().toLowerCase();
-    if (!cmd) return;
-    const next: Line[] = [...lines, { type: "in", text: raw.trim() }];
+    const typed = raw.trim();
+    if (!typed) return;
+    const next: Line[] = [...lines, { type: "in", text: typed }];
+    const cmd = resolveCommand(typed);
 
     if (cmd === "clear") {
       setLines([]);
@@ -86,12 +154,12 @@ export default function Terminal() {
       setOpen(false);
       return;
     }
-    if (facts[cmd]) {
+    if (cmd && facts[cmd]) {
       facts[cmd].forEach((t) => next.push({ type: "out", text: t }));
     } else {
       next.push({
         type: "out",
-        text: `command not found: ${cmd} — try \`help\``,
+        text: `not sure what "${typed}" means — try \`help\``,
       });
     }
     setLines(next);
