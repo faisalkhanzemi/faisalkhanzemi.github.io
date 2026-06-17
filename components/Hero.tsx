@@ -5,7 +5,6 @@ import { ArrowUpRight, Download } from "lucide-react";
 import { heroMetrics, profile } from "@/lib/content";
 import CountUp from "./ui/CountUp";
 import MagneticButton from "./ui/MagneticButton";
-import LiveChart from "./ui/LiveChart";
 import GradientMesh from "./ui/GradientMesh";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -79,7 +78,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease }}
-        className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-[repeat(4,1fr)_1.4fr]"
+        className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4"
       >
         {heroMetrics.map((m) => (
           <div key={m.label} className="bg-surface p-5">
@@ -95,11 +94,6 @@ export default function Hero() {
             <div className="mt-1 text-xs text-ink-muted">{m.label}</div>
           </div>
         ))}
-
-        {/* live running chart cell */}
-        <div className="bg-surface p-5 sm:col-span-2 lg:col-span-1">
-          <LiveChart />
-        </div>
       </motion.div>
       </div>
     </section>
