@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local dev
 /.claude/
+
+# internal project state, never publish
+HANDOVER.md
