@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Mohd Faisal Khan — CRM & Lifecycle Marketing",
     short_name: "Faisal Khan",
     description:
-      "Portfolio of Mohd Faisal Khan, CRM and lifecycle marketing specialist in Dubai.",
+      "Portfolio of Mohd Faisal Khan (faisalkhanzemi), CRM Manager and lifecycle marketer in Dubai.",
     start_url: "/",
     display: "standalone",
     background_color: "#f8f8f6",

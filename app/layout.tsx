@@ -24,10 +24,10 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://faisal-khan-portfolio.vercel.app";
-const TITLE = "Mohd Faisal Khan — CRM & Lifecycle Marketing Specialist";
+const SITE_URL = "https://faisalkhanzemi.github.io";
+const TITLE = "Mohd Faisal Khan (faisalkhanzemi) — CRM Manager, Lifecycle Marketing";
 const DESCRIPTION =
-  "CRM and lifecycle marketing specialist in Dubai. 8+ years building customer journeys, automation stacks, and data-driven campaigns across home services, consumer tech, food delivery, and retail.";
+  "Mohd Faisal Khan (@faisalkhanzemi), CRM Manager at Traininpink in Dubai. 8+ years building customer journeys, automation and data-driven campaigns across subscription apps, home services, consumer tech, food delivery and retail.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -36,7 +36,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   authors: [{ name: "Mohd Faisal Khan" }],
   keywords: [
-    "CRM Specialist",
+    "CRM Manager",
+    "Klaviyo",
+    "faisalkhanzemi",
     "Lifecycle Marketing",
     "Retention Marketing",
     "CleverTap",
@@ -69,16 +71,23 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Mohd Faisal Khan",
-  jobTitle: "CRM & Lifecycle Marketing Specialist",
+  alternateName: profile.handle,
+  jobTitle: "CRM Manager",
+  worksFor: { "@type": "Organization", name: "Traininpink" },
   url: SITE_URL,
   email: `mailto:${profile.email}`,
-  telephone: profile.phone,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Dubai",
     addressCountry: "AE",
   },
-  sameAs: [profile.linkedinUrl],
+  sameAs: [
+    profile.linkedinUrl,
+    profile.githubUrl,
+    profile.threadsUrl,
+    profile.instagramUrl,
+    profile.xUrl,
+  ],
   knowsAbout: [
     "CRM",
     "Lifecycle Marketing",

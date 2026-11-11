@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
 
-export const alt = "Mohd Faisal Khan — CRM & Lifecycle Marketing Specialist";
+export const alt = "Mohd Faisal Khan — CRM Manager, Lifecycle Marketing";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

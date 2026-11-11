@@ -20,12 +20,12 @@ const facts: Record<string, string[]> = {
   ],
   whoami: [
     `${profile.name}`,
-    "CRM & Lifecycle Marketing Specialist, Dubai.",
+    "CRM Manager at Traininpink · Lifecycle Marketing, Dubai.",
     "Data-driven but human. Precise but warm. Entrepreneurial.",
     "Turns drop-off points into re-engagement, one journey at a time.",
   ],
   stack: [
-    "CRM       CleverTap · MoEngage · WebEngage · Braze",
+    "CRM       Klaviyo · CleverTap · MoEngage · WebEngage · Braze",
     "Channels  Push · Email · WhatsApp API · In-App · SMS · Web",
     "Analytics GA · SEOmonitor · Semrush · Excel",
   ],
@@ -39,6 +39,7 @@ const facts: Record<string, string[]> = {
   contact: [
     `email     ${profile.email}`,
     `linkedin  ${profile.linkedin}`,
+    `github    github.com/${profile.handle}`,
     `location  ${profile.location}`,
   ],
 };

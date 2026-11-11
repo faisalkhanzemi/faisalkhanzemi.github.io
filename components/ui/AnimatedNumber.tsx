@@ -41,7 +41,8 @@ export default function AnimatedNumber({
   const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
   const reduce = useReducedMotion();
   const parts = parse(value);
-  const [progress, setProgress] = useState(0);
+  // 1 = final value, so the static HTML shows the real numbers; the animation runs in the browser.
+  const [progress, setProgress] = useState(1);
 
   useEffect(() => {
     if (!inView) return;

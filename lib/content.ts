@@ -1,11 +1,15 @@
 export const profile = {
   name: "Mohd Faisal Khan",
-  title: "CRM Specialist · Retention · Lifecycle Marketing",
+  title: "CRM Manager · Retention · Lifecycle Marketing",
   location: "Dubai, UAE",
   email: "faisalkhanzemi@gmail.com",
   linkedin: "linkedin.com/in/faisalkhanzemi",
   linkedinUrl: "https://linkedin.com/in/faisalkhanzemi",
-  phone: "+971 50 719 4898",
+  handle: "faisalkhanzemi",
+  githubUrl: "https://github.com/faisalkhanzemi",
+  threadsUrl: "https://www.threads.net/@faisalkhanzemi",
+  instagramUrl: "https://www.instagram.com/faisalkhanzemi",
+  xUrl: "https://x.com/faisalkhanzemi",
   resumeUrl: "/Faisal-Khan-CV.pdf",
   resumeName: "Faisal-Khan-CV.pdf",
 };
@@ -18,9 +22,10 @@ export const heroMetrics = [
 ];
 
 export const toolStack = [
-  { group: "CRM Platforms", tools: ["CleverTap", "MoEngage", "WebEngage", "Braze"] },
+  { group: "CRM Platforms", tools: ["Klaviyo", "CleverTap", "MoEngage", "WebEngage", "Braze"] },
   { group: "Channels", tools: ["Push", "Email", "WhatsApp API", "In-App", "SMS", "Web"] },
   { group: "Analytics & SEO", tools: ["Google Analytics", "SEOmonitor", "Semrush", "Excel"] },
+  { group: "AI & Automation", tools: ["Claude Code", "MCP", "Python"] },
 ];
 
 export type Experience = {
@@ -35,11 +40,23 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    company: "Traininpink",
+    location: "Dubai, UAE",
+    role: "CRM Manager",
+    period: "Aug 2026 — Present",
+    current: true,
+    points: [
+      "Own lifecycle automation in Klaviyo across the subscription journey: onboarding, trials, payment recovery, renewals and win-back, in Italian and English",
+      "Rebuilding the CRM event and metric layer (CRM 2.0) with product and tech, so every flow triggers on reliable app and payment events",
+      "Report flow performance to leadership by lifecycle stage (new users, existing leads, retention), counting trials and payments rather than opens",
+      "Run QA, localisation and go-live checks for every flow before it reaches customers",
+    ],
+  },
+  {
     company: "Justlife",
     location: "Dubai, UAE",
     role: "CRM Specialist",
-    period: "Jun 2025 — Present",
-    current: true,
+    period: "Jun 2025 — Jul 2026",
     logo: "/logos/justlife.png",
     points: [
       "Ran weekly Focus Campaigns across push, WhatsApp, and email; A/B tested channels, timings, and copy. CTR improved from 1.8% to 3.4%, conversions up 26%",
@@ -133,6 +150,7 @@ export type CaseStudy = {
   logo?: string;
   description: string;
   metrics: { value: string; label: string }[];
+  link?: { href: string; label: string };
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -187,6 +205,19 @@ export const caseStudies: CaseStudy[] = [
       { value: "UAE + KSA", label: "markets" },
       { value: "In-house", label: "agency replaced" },
     ],
+  },
+  {
+    index: "05",
+    title: "Insta Edits for Claude (open source)",
+    tag: "Claude Code · MCP · Open source",
+    description:
+      "A free plugin and MCP server that lets Claude Code edit Reels inside Instagram's Edits for Mac. Edits only shows AI agents 32 of its 274 tools until a project is open and never says when that changes; the plugin checks after every call so Claude gets the full editor. Published on GitHub, PyPI and the official MCP Registry, and featured in the Big Bang AI Weekly newsletter.",
+    metrics: [
+      { value: "32→274", label: "Edits tools unlocked" },
+      { value: "MIT", label: "free and open source" },
+      { value: "0.1.2", label: "latest release" },
+    ],
+    link: { href: "https://faisalkhanzemi.github.io/insta-edits-for-claude/", label: "See the project" },
   },
 ];
 

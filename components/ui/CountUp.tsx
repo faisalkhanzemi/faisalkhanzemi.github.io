@@ -27,7 +27,9 @@ export default function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -20% 0px" });
   const reduce = useReducedMotion();
-  const [display, setDisplay] = useState(from);
+  // Start at the final value so the static HTML (read by Google and link previews) is correct;
+  // the count-up from `from` only runs in the browser once the number scrolls into view.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     if (!inView) return;

@@ -49,7 +49,7 @@ export default function Contact() {
         <a
           href={profile.linkedinUrl}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="me noopener noreferrer"
           className="group flex items-center justify-between gap-6 rounded-2xl border border-border bg-surface px-6 py-5 transition-colors hover:border-ink"
         >
           <span className="flex items-center gap-3">
@@ -71,6 +71,30 @@ export default function Contact() {
           </span>
           <ArrowUpRight className="h-4 w-4 text-ink-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
+      </Reveal>
+
+      <Reveal delay={0.15} className="mt-6">
+        <p className="font-mono text-xs text-ink-muted">
+          Also @{profile.handle} on{" "}
+          {[
+            { label: "GitHub", href: profile.githubUrl },
+            { label: "Threads", href: profile.threadsUrl },
+            { label: "Instagram", href: profile.instagramUrl },
+            { label: "X", href: profile.xUrl },
+          ].map((s, i, all) => (
+            <span key={s.label}>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="me noopener noreferrer"
+                className="text-ink underline decoration-border underline-offset-4 hover:text-accent"
+              >
+                {s.label}
+              </a>
+              {i < all.length - 1 ? " · " : ""}
+            </span>
+          ))}
+        </p>
       </Reveal>
 
       <footer className="mt-24 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 sm:flex-row sm:items-center">

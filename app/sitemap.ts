@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://faisal-khan-portfolio.vercel.app";
+const SITE_URL = "https://faisalkhanzemi.github.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

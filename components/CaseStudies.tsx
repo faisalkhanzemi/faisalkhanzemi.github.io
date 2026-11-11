@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { caseStudies } from "@/lib/content";
@@ -52,15 +52,13 @@ export default function CaseStudies() {
                   </motion.span>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
+                <motion.div
+                  initial={false}
+                  animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                  aria-hidden={!isOpen}
+                >
                       <div className="px-6 pb-7 md:px-8 md:pl-[3.25rem]">
                         <p className="max-w-2xl text-sm leading-relaxed text-ink-muted">
                           {cs.description}
@@ -77,10 +75,17 @@ export default function CaseStudies() {
                             </div>
                           ))}
                         </div>
+                        {cs.link && (
+                          <a
+                            href={cs.link.href}
+                            className="mt-5 inline-block font-mono text-xs text-accent underline-offset-4 hover:underline"
+                            tabIndex={isOpen ? 0 : -1}
+                          >
+                            {cs.link.label} →
+                          </a>
+                        )}
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                </motion.div>
               </div>
             </Reveal>
           );

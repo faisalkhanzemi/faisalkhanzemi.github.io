@@ -20,16 +20,22 @@ export default function About() {
             bring them back.
           </p>
           <p>
-            Currently at <span className="text-ink">Justlife</span> in Dubai,
-            where I own the full CRM function, from weekly campaign execution to
-            CleverTap journey architecture, A/B testing frameworks, and
-            incremental lift analysis.
+            Currently <span className="text-ink">CRM Manager at Traininpink</span>,
+            where I own lifecycle automation in Klaviyo across the subscription
+            journey, from onboarding and trials to payment recovery, renewals
+            and win-back, in Italian and English.
           </p>
           <p>
-            Beyond CRM, I&apos;ve been building an{" "}
-            <span className="text-ink">in-house SEO function</span> at Justlife,
-            taking content operations from agency-dependent to structured,
-            keyword-targeted, and measurable.
+            Before that, at <span className="text-ink">Justlife</span> in Dubai,
+            I ran the full CRM function on CleverTap and built an in-house SEO
+            function. I also build AI tools in the open, like{" "}
+            <a
+              href="https://faisalkhanzemi.github.io/insta-edits-for-claude/"
+              className="text-ink underline decoration-border underline-offset-4 hover:text-accent"
+            >
+              Insta Edits for Claude
+            </a>
+            , a free plugin that lets Claude edit Reels in Instagram&apos;s Edits for Mac.
           </p>
         </Reveal>
 

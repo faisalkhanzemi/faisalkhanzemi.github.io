@@ -48,7 +48,7 @@ export default function Hero() {
         className="mt-7 max-w-2xl text-pretty text-base leading-relaxed text-ink-muted sm:text-lg"
       >
         8+ years building customer journeys, automation stacks, and data-driven
-        campaigns across home services, consumer tech, food delivery, and
+        campaigns across subscription apps, home services, consumer tech, food delivery, and
         retail, in UAE, India, and Canada.
       </motion.p>
 
